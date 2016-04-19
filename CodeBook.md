@@ -8,15 +8,16 @@ The run_analysis.R file contains the script for the Data Transformation operatio
 
 run_analysis.R performs the following steps:
 
-1. Loads the necessary R packages: data.table and stringr
-2. Reads the data for the test and training data, labels and subject ids from the working directory.
-3. Reads the helper data from the features.txt and activity_labels.txt files from the working directory, which will be used to make descriptive column names and activity names for later processing
-4. Combines the different data tables into a single data table, changes the column labels to be more descriptive, drops all columns that are not mean (mean) or standard deviation (std) measurements
-5. Reorders the columns so that subject_id, activity_id and activity_name are on the left for easier scanning.
-6. Creates a new data table that creates an average (mean) for each activity by each subject to further reduce and summarize the data.
-7. Finally, the script writes the two tidy data sets to the local drive: tidy.txt and tidy_avg.txt
+1. **Loads** the necessary R packages: data.table and stringr
+2. **Reads** the data for the test and training data, labels and subject ids from the working directory.
+3. **Reads** the helper data from the features.txt and activity_labels.txt files from the working directory, which will be used to make descriptive column names and activity names for later processing
+4. **Combines** the different data tables into a single data table, **changes** the column labels to be more descriptive, **drops** all columns that are not mean (mean) or standard deviation (std) measurements
+5. **Reorders** the columns so that subject_id, activity_id and activity_name are on the left for easier scanning.
+6. **Creates** a new data table that creates an average (mean) for each activity by each subject to further reduce and summarize the data.
+7. Finally, the script **writes** the two tidy data sets to the local drive: tidy.txt and tidy_avg.txt
 
-
+### Variables
+The resulting data (tidy_avg.txt) set contains only the 
 
 
 
