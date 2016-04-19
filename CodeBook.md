@@ -15,4 +15,7 @@ run_analysis.R performs the following steps:
 6. Creates a new data table that creates an average (mean) for each activity by each subject to further reduce and summarize the data.
 7. Finally, the script writes the two tidy data sets to the local drive: tidy.txt and tidy_avg.txt
 
+1. Make my changes 1. Fix bug 2. Improve formatting * Make the headings bigger 2. Push my commits to GitHub 3. Open a pull request * Describe my changes * Mention all the members of my team * Ask for feedback
+
+
 
