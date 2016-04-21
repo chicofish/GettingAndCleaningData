@@ -43,9 +43,9 @@ filter <- as.logical(as.integer(!is.na(as.logical(str_locate(featureNames[,2], "
 colNamesToRetain <- featureNames[filter[1:561],]
 
 
-###################################################
-#### combine data tables by type befor merging ####
-###################################################
+####################################################
+#### combine data tables by type before merging ####
+####################################################
 
 #create single tables for observational data, activity label key and for subject ids
 obs_comb <- rbind(obs_train_table, obs_test_table)
@@ -56,6 +56,7 @@ subject_comb <- rbind(subject_train_table, subject_test_table)
 rm(labels_test_table, labels_train_table, obs_test_table, obs_train_table, subject_test_table, subject_train_table)
 
 #change column labels for the obs_comb table to be more descriptive.
+#column order in obs_comb matches the descriptor labels by row number in featureNames
 curCounter = 0
 for(curColNum in featureNames[,1]) {
     names(obs_comb)[curColNum] <- as.character(featureNames[curColNum, 2])
@@ -109,6 +110,7 @@ setcolorder(full_comb, c(1,2,69,3:68))
 
 avg_output <- full_comb[, lapply(.SD, mean), by=.(subject_id, activity_id), .SDcols=names(full_comb)[4:69]]
 
+#join with activity lables helper table to flatten tables an add human readable activity names to the data table.
 setkey(avg_output, activity_id)
 setkey(actLabels, activity_id)
 avg_output <- avg_output[actLabels]
@@ -125,6 +127,11 @@ rm(actLabels, featureNames)
 ####                  activity names and descriptive col names                      ####
 ####  2) avg_output - aggregated mean for each variable by activity and subject     ####
 ########################################################################################
+
+
+###############################################
+#### write the two tidy data sets to files ####
+###############################################
 
 write.table(full_comb, "tidy.txt", row.name=FALSE)
 write.table(avg_output, "tidy_avg.txt", row.name=FALSE)

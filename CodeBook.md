@@ -17,7 +17,14 @@ run_analysis.R performs the following steps:
 7. Finally, the script **writes** the two tidy data sets to the local drive: tidy.txt and tidy_avg.txt
 
 ### Variables
-The resulting data (tidy_avg.txt) set contains only the 
+The resulting data (tidy_avg.txt) set contains the variables from the original HAR set that were either means or standard deviations, e.g., tBodyAccMean, averaged by activity by subject.  For more description on the units and the method by which each reading was obtained, see Appendix B or the original HAR 'features_info.txt'.
+
+### R Packages and Design Notes
+The R script run_analysis.R is a pretty simple and linear script that uses two packages in addition to Base: stringr and data.tables.
+
+Stringr is primarily used for the string manipulation of the variable names to programmatically translate the  feature.txt file into descriptive column names without having to manually label the full set of 599 columns or the reduced set of 167 columns.  
+
+data.table was more performant than using data frames in R for the data set at hand (3-4 times faster on average).  Data transformations and aggregation were easily handled in data.table commands and since operations do not copy the table, it was more efficient use of RAM throughout the script run.  Nevertheless, when data tables were no longer needed, they were removed from memory to free up RAM.
 
 
 
